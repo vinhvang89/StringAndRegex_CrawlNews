@@ -8,14 +8,14 @@ import java.util.regex.Pattern;
 public class News {
     public static void main(String[] args) throws IOException {
         try {
-            String link = "https://dantri.com.vn/the-gioi.htm";
+            String link = "https://vnexpress.net/the-gioi";
             URL url = new URL(link);
             Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
             scanner.useDelimiter("\\Z");
             String content = scanner.next();
             scanner.close();
-
-            Pattern pattern = Pattern.compile("^[=]+[A-Za-z0-9]+$");
+            content.replaceAll("\\n+","");
+            Pattern pattern = Pattern.compile("title=\"(.*)(?)");
             Matcher matcher = pattern.matcher(content);
             while (matcher.find()){
                 System.out.println(matcher.group(1));
