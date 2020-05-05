@@ -15,11 +15,12 @@ public class News {
             String content = scanner.next();
             scanner.close();
             content.replaceAll("\\n+","");
-            Pattern pattern = Pattern.compile("title=\"(.*)(?)");
+            Pattern pattern = Pattern.compile("alt=\"(.*?) class=");
             Matcher matcher = pattern.matcher(content);
             while (matcher.find()){
                 System.out.println(matcher.group(1));
             }
+//            System.out.println(content);
         }catch (Exception e){
             System.out.println("Máy ghẻ");
         }
